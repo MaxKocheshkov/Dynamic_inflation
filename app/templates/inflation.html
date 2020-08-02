@@ -1,4 +1,4 @@
-<!DOCTYPE html>{% load static %}
+<!DOCTYPE html>{% load static %} {% load app_filters %}
 <html>
 <head>
     <meta charset="UTF-8">
@@ -41,6 +41,26 @@
                 {% for data in col %}
                     {% if data and forloop.last %}
                         <td style="background: {{ 'grey' }}">
+                            {{ data }}
+                        </td>
+                    {% elif data and forloop.first %}
+                        <td>
+                            {{ data }}
+                        </td>
+                    {% elif "-0" in data %}
+                        <td style="background: {{ 'green' }}">
+                            {{ data }}
+                        </td>
+                    {% elif "1" <= data and "2" >= data %}
+                        <td style="background: {{ 'LightCoral' }}">
+                            {{ data }}
+                        </td>
+                    {% elif "2" < data and "5" >= data %}
+                        <td style="background: {{ 'IndianRed' }}">
+                            {{ data }}
+                        </td>
+                    {% elif "5" < data  %}
+                        <td style="background: {{ 'Red' }}">
                             {{ data }}
                         </td>
                     {% elif data %}
