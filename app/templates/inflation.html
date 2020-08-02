@@ -39,7 +39,11 @@
             {% for col in columns %}
             <tr>
                 {% for data in col %}
-                    {% if data %}
+                    {% if data and forloop.last %}
+                        <td style="background: {{ 'grey' }}">
+                            {{ data }}
+                        </td>
+                    {% elif data %}
                         <td>
                             {{ data }}
                         </td>
